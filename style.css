@@ -25,8 +25,16 @@
   padding: 8px;
   flex-direction: column;
 }
+
 .home {
   flex: 0 1 auto;
+}
+
+.close {
+  position: absolute;
+  right: 54px;
+  top: 22px;
+  display: none;
 }
 
 .home ul li {
@@ -50,16 +58,25 @@
   justify-content: space-between;
 }
 
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
 .cardContainer {
   flex-wrap: wrap;
   overflow-y: scroll;
   max-height: 70vh;
+  margin: 5px;
+  gap: 5px;
 }
 
 .card {
   width: 200px;
   flex-direction: column;
   position: relative;
+  margin: 5px;
+  padding: 5px;
 }
 
 .card img {
@@ -95,6 +112,9 @@
   background-color: rgb(78, 78, 78);
   /* flex-direction: column; */
   justify-content: space-between;
+  align-items: center;
+  min-height: 42px;
+  gap: 12px;
 }
 
 .songList {
@@ -123,6 +143,11 @@
   background-color: #fff;
 }
 
+/* .abovebar {
+  justify-content: space-between;
+  align-items: center;
+  width: 72vw;
+} */
 .circle {
   width: 12px;
   height: 12px;
@@ -136,4 +161,45 @@
 
 .songbuttons {
   cursor: pointer;
+}
+
+/* //////////////// media queries ##################  */
+
+@media (max-width: 1300px) {
+  .left {
+    position: absolute;
+    left: -120%;
+    transition: all 0.4s;
+    z-index: 1;
+    width: 352px;
+    height: 97vh;
+  }
+
+  .right {
+    width: 100vw;
+  }
+  .playbar {
+    width: calc(100vw - 45px);
+  }
+  .seekbar {
+    width: calc(100vw - 50px);
+  }
+
+  .hamburger {
+    display: inline;
+  }
+  .close {
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  .cardContainer {
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  .card {
+    width: 85vw;
+  }
 }

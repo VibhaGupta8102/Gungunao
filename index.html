@@ -11,9 +11,13 @@
   <body>
     <div class="container flex bg-black gap p-5">
       <div class="left bg-grey rounded gap flex">
+        <div class="close">
+          <img src="svgs/cross.svg" alt="Close" />
+        </div>
         <div class="home bg-medium rounded p-5">
           <div class="logo gap flex items-center">
-            <img src="svgs/logo.svg" alt="Logo" />Gungunao
+            <img src="svgs/logo.svg" alt="Logo" />
+            <h1>Gungunao</h1>
           </div>
           <ul>
             <li class="flex items-center">
@@ -37,7 +41,8 @@
 
       <div class="right bg-grey rounded">
         <div class="header flex items-center p-5 bg-medium rounded">
-          <div class="nav">
+          <div class="nav flex items-center gap">
+            <img src="svgs/hamburger.svg" alt="hamburger" class="hamburger" />
             <img src="svgs/left.svg" alt="Left" />
             <img src="svgs/right.svg" alt="Right" />
           </div>
@@ -48,8 +53,8 @@
         </div>
         <div class="spotifyPlaylists p-5">
           <h1>Your PlayLists</h1>
-          <div class="cardContainer flex gap m-5">
-            <div class="card rounded bg-medium m-5 p-5 flex gap">
+          <div class="cardContainer flex">
+            <div class="card rounded bg-medium flex gap">
               <div class="play">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -90,10 +95,11 @@
             </div>
           </div>
 
-          <div class="playbar p-5 rounded flex gap m-5">
+          <div class="playbar p-5 rounded flex m-5">
             <div class="seekbar">
               <div class="circle"></div>
             </div>
+            <!-- <div class="abovebar flex"> -->
             <div class="songinfo"></div>
             <div class="songbuttons flex gap justify">
               <img
@@ -115,7 +121,8 @@
                 id="next"
               />
             </div>
-            <div class="songtime"></div>
+            <div class="songtime">00:00 / 00:00</div>
+            <!-- </div> -->
           </div>
         </div>
       </div>

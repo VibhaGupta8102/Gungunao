@@ -37,17 +37,16 @@ const playMusic = (track, pause = false) => {
   currentSong.src = "/songs/" + track + ".mp3";
   if (!pause) {
     currentSong.play();
-
     play.src = "svgs/pause.svg";
-    document.querySelector(".songinfo").innerHTML = decodeURI(track);
   }
+  document.querySelector(".songinfo").innerHTML = decodeURI(track);
   // document.querySelector(".songtime").innerHTML = "";
 };
 
 async function main() {
   songs = await getSongs();
-  // console.log(songs);
-  playMusic(songs[0], true);
+  // console.log(songs[0].title.split(".")[0]);
+  playMusic(songs[0].title.split(".")[0], true);
   let songUL = document
     .querySelector(".songList")
     .getElementsByTagName("ul")[0];
@@ -65,7 +64,7 @@ async function main() {
     document.querySelector(".songList").getElementsByTagName("li")
   ).forEach((e) => {
     e.addEventListener("click", (element) => {
-      console.log(e.querySelector("div").innerHTML);
+      // console.log(e.querySelector("div").innerHTML);
       playMusic(e.querySelector("div").innerHTML);
     });
   });
@@ -85,6 +84,24 @@ async function main() {
     document.querySelector(".songtime").innerHTML = `${secondsTominsec(
       currentSong.currentTime
     )} / ${secondsTominsec(currentSong.duration)}`;
+
+    document.querySelector(".circle").style.left =
+      (currentSong.currentTime / currentSong.duration) * 100 + "%";
+  });
+
+  document.querySelector(".seekbar").addEventListener("click", (e) => {
+    let clickedPercent =
+      (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+    document.querySelector(".circle").style.left = clickedPercent + "%";
+    currentSong.currentTime = (clickedPercent * currentSong.duration) / 100;
+  });
+
+  document.querySelector(".hamburger").addEventListener("click", (e) => {
+    document.querySelector(".left").style.left = 0;
+  });
+
+  document.querySelector(".close").addEventListener("click", (e) => {
+    document.querySelector(".left").style.left = -120 + "%";
   });
 }
 main();
