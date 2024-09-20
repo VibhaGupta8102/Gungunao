@@ -99,30 +99,48 @@
             <div class="seekbar">
               <div class="circle"></div>
             </div>
-            <!-- <div class="abovebar flex"> -->
-            <div class="songinfo"></div>
-            <div class="songbuttons flex gap justify">
-              <img
-                src="svgs/previous.svg"
-                alt="previous song"
-                class="invert"
-                id="previous"
-              />
-              <img
-                src="svgs/play.svg"
-                alt="Play song"
-                class="invert"
-                id="play"
-              />
-              <img
-                src="svgs/next.svg"
-                alt="next song"
-                class="invert"
-                id="next"
-              />
+            <div class="abovebar flex">
+              <div
+                class="songinfo"
+                style="flex: 1; word-wrap: normal; white-space: normal"
+              ></div>
+              <div
+                class="songbuttons flex gap justify"
+                style="flex: 1; word-wrap: normal; white-space: normal"
+              >
+                <img
+                  src="svgs/previous.svg"
+                  alt="previous song"
+                  class="invert"
+                  id="previous"
+                />
+                <img
+                  src="svgs/play.svg"
+                  alt="Play song"
+                  class="invert"
+                  id="play"
+                />
+                <img
+                  src="svgs/next.svg"
+                  alt="next song"
+                  class="invert"
+                  id="next"
+                />
+              </div>
+              <div
+                class="flex justify items-center gap"
+                style="
+                  flex: 1;
+                  word-wrap: normal;
+                  white-space: normal;
+                  text-align: right;
+                "
+              >
+                <div class="songtime m-5 p-5">00:00/00:00</div>
+                <img src="svgs/volume.svg" alt="Volume" class="m-5 p-5" />
+                <input type="range" name="volume" id="" />
+              </div>
             </div>
-            <div class="songtime">00:00 / 00:00</div>
-            <!-- </div> -->
           </div>
         </div>
       </div>

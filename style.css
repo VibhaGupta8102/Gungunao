@@ -143,11 +143,11 @@
   background-color: #fff;
 }
 
-/* .abovebar {
+.abovebar {
   justify-content: space-between;
   align-items: center;
-  width: 72vw;
-} */
+  width: 100%;
+}
 .circle {
   width: 12px;
   height: 12px;

@@ -1,5 +1,5 @@
 let currentSong = new Audio();
-
+let songs;
 // function secondsTominsec(num) {
 //   let min = num / 60;
 //   let sec = num % 60;
@@ -21,7 +21,7 @@ async function getSongs() {
   let div = document.createElement("div");
   div.innerHTML = response;
   let as = div.getElementsByTagName("a");
-  let songs = [];
+  songs = [];
   for (let index = 0; index < as.length; index++) {
     const element = as[index];
     if (element.href.endsWith(".mp3")) {
@@ -102,6 +102,36 @@ async function main() {
 
   document.querySelector(".close").addEventListener("click", (e) => {
     document.querySelector(".left").style.left = -120 + "%";
+  });
+
+  previous.addEventListener("click", () => {
+    // Find the current song in the songs array
+    let currentTrack = decodeURI(
+      currentSong.src.split("/").pop().split(".")[0]
+    );
+    let currentIndex = songs.findIndex(
+      (song) => song.title.split(".")[0] === currentTrack
+    );
+    // Decrement the index and loop back to the first song if at the end
+    let previousIndex = (currentIndex - 1) % songs.length;
+    if (previousIndex >= 0) {
+      // Play the next song
+      playMusic(songs[previousIndex].title.split(".")[0]);
+    }
+  });
+  next.addEventListener("click", () => {
+    // Find the current song in the songs array
+    let currentTrack = decodeURI(
+      currentSong.src.split("/").pop().split(".")[0]
+    );
+    let currentIndex = songs.findIndex(
+      (song) => song.title.split(".")[0] === currentTrack
+    );
+    // Increment the index and loop back to the first song if at the end
+    let nextIndex = (currentIndex + 1) % songs.length;
+
+    // Play the next song
+    playMusic(songs[nextIndex].title.split(".")[0]);
   });
 }
 main();
