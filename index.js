@@ -1,5 +1,6 @@
 let currentSong = new Audio();
 let songs;
+let currFolder;
 // function secondsTominsec(num) {
 //   let min = num / 60;
 //   let sec = num % 60;
@@ -14,8 +15,9 @@ function secondsTominsec(num) {
     .padStart(2, "0")}`; // Add leading zeros
 }
 
-async function getSongs() {
-  let a = await fetch("http://127.0.0.1:5500/songs/");
+async function getSongs(folder) {
+  currFolder = folder;
+  let a = await fetch(`http://127.0.0.1:5500/${folder}/`);
   let response = await a.text();
   //   console.log(response);
   let div = document.createElement("div");
@@ -34,7 +36,7 @@ async function getSongs() {
 
 const playMusic = (track, pause = false) => {
   // currentSong.pause();
-  currentSong.src = "/songs/" + track + ".mp3";
+  currentSong.src = `/${currFolder}/` + track + ".mp3";
   if (!pause) {
     currentSong.play();
     play.src = "svgs/pause.svg";
@@ -44,7 +46,7 @@ const playMusic = (track, pause = false) => {
 };
 
 async function main() {
-  songs = await getSongs();
+  songs = await getSongs(songs1);
   // console.log(songs[0].title.split(".")[0]);
   playMusic(songs[0].title.split(".")[0], true);
   let songUL = document
@@ -132,6 +134,10 @@ async function main() {
 
     // Play the next song
     playMusic(songs[nextIndex].title.split(".")[0]);
+  });
+
+  volume.addEventListener("change", (e) => {
+    currentSong.volume = e.target.value / 100;
   });
 }
 main();

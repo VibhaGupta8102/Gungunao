@@ -182,7 +182,7 @@
     width: calc(100vw - 45px);
   }
   .seekbar {
-    width: calc(100vw - 50px);
+    width: calc(100vw - 55px);
   }
 
   .hamburger {
@@ -201,5 +201,11 @@
   }
   .card {
     width: 85vw;
+  }
+
+  .abovebar {
+    flex-direction: column;
+    width: 90vw;
+    padding: 5px;
   }
 }
