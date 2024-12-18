@@ -12,7 +12,7 @@ function secondsTominsec(num) {
 
 async function getSongs(folder) {
   currFolder = folder;
-  let a = await fetch(`https://vibhagupta8102.github.io/Gungunao/albums/${folder}/info.json`);
+  let a = await fetch(`albums/${folder}/info.json`);
   let response = await a.json();
   let div = document.createElement("div");
   div.innerHTML = response;
