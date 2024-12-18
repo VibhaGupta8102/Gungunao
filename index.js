@@ -60,7 +60,7 @@ const playMusic = (track, pause = false) => {
 };
 
 async function displayAlbums() {
-  let a = await fetch("https://vibhagupta8102.github.io/Gungunao/albums/");
+  let a = await fetch("albums/");
   let response = await a.text();
   let div = document.createElement("div");
   div.innerHTML = response;
@@ -74,7 +74,7 @@ async function displayAlbums() {
       // console.log(e);
       let folder = e.href.split("/").slice(-1)[0];
       // console.log(folder);
-      let a = await fetch(`https://vibhagupta8102.github.io/Gungunao/albums/${folder}/info.json`);
+      let a = await fetch(`albums/${folder}/info.json`);
       let response = await a.json();
       cardContainer.innerHTML += ` <div class="card rounded bg-medium flex gap" data-folder=${folder}>
               <div class="play">
